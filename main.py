@@ -2,6 +2,9 @@ import numpy as np # linear algebra
 import pandas as pd # data processing
 import os
 import streamlit as st
+import warnings
+
+warnings.filterwarnings('ignore')
 
 #import the first dataset; seperated by tabs and doesn't have any columns names so this code addresses that 
 columns_names=['user_id','item_id','rating','timestamp']
@@ -27,7 +30,7 @@ moviemat = df.pivot_table(index='user_id',columns='title',values='rating')
 moviemat.head()
 
 
-selection = st.text_input("input your movie name and year ex: 'Star Wars (1977)' "+"\n")
+selection = st.text_input("Input your movie name and year to find movies with similar rating ex: 'Star Wars (1977)' "+"\n")
 selection_user_ratings = moviemat[selection]
 selection_user_ratings.head()
 
