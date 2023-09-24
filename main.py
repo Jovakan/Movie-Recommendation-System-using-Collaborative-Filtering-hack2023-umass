@@ -1,34 +1,22 @@
 import numpy as np # linear algebra
-import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
+import pandas as pd # data processing
 import os
 
-#
-#for dirname, _, filenames in os.walk('/Users/chandra/hack2023-umass/ml-100k'):
-#    for filename in filenames:
-#        print(os.path.join(dirname, filename))
-               
-#import warnings
-#warnings.filterwarnings("ignore")
-#warnings.warn("this will not show")
-#
-
-
+#import the first dataset; seperated by tabs and doesn't have any columns names so this code addresses that 
 columns_names=['user_id','item_id','rating','timestamp']
 df=pd.read_csv("/Users/chandra/hack2023-umass/ml-100k/u.data", sep="\t",names=columns_names)        
-df.head(2)
 
-
-
+#import the second dataset; similar to the first
 columns_names=['item_id','title','date', "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15", "A16", "A17", "A18", "A19", "A20", "A21"]
-
 movies = pd.read_csv('/Users/chandra/hack2023-umass/ml-100k/u.item', sep='|', encoding='latin-1', names=columns_names)
 
-
+#we only need the first two columns to setup before we merge the two datasets together 
 movies=movies.iloc[: , 0:2]
-movies.head()
 
 
+#merge the datasets together
 df = pd.merge(df, movies, on='item_id')
+#drop the timestamps since we don't need it anymore
 df.drop(["timestamp"], axis = 1, inplace = True)
 
 
