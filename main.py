@@ -31,6 +31,7 @@ We will make a collaborative recommodition using the ratings given by the users.
 
 We will recommend the most liked (leader) film to everyone.
 '''
+
 moviemat = df.pivot_table(index='user_id',columns='title',values='rating')
 moviemat.head()
 
