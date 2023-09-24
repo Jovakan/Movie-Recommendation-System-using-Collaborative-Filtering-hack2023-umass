@@ -48,8 +48,11 @@ ratings['rating_vote_number'] = pd.DataFrame(df.groupby('title')['rating'].count
 st.write("Most voted on films")
 st.write(ratings.sort_values('rating_vote_number',ascending=False).head())
 
+#add ratings number to our recommendation selection
 corr_selection = corr_selection.join(ratings['rating_vote_number'])
-st.write(corr_selection.head())
 
+
+
+#output the final 
 final = corr_selection[corr_selection['rating_vote_number']>100].sort_values('Correlation',ascending=False).head()
 st.write(final)
