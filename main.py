@@ -53,6 +53,7 @@ corr_selection = corr_selection.join(ratings['rating_vote_number'])
 
 
 
-#output the final 
+#output the final list of recommendations based on input
 final = corr_selection[corr_selection['rating_vote_number']>100].sort_values('Correlation',ascending=False).head()
+st.write("Recomended based on input")
 st.write(final)
