@@ -35,7 +35,8 @@ We will recommend the most liked (leader) film to everyone.
 moviemat = df.pivot_table(index='user_id',columns='title',values='rating')
 moviemat.head()
 
-starwars_user_ratings = moviemat['Star Wars (1977)']
+selection = input("input your movie name and year ex: 'Star Wars (1977)' ")
+starwars_user_ratings = moviemat[selection]
 starwars_user_ratings.head()
 
 similar_to_starwars = moviemat.corrwith(starwars_user_ratings)
