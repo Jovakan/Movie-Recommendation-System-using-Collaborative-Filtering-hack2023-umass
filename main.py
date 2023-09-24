@@ -27,7 +27,6 @@ df.drop(["timestamp"], axis = 1, inplace = True)
 
 #start setting up the reccomendation system 
 moviemat = df.pivot_table(index='user_id',columns='title',values='rating')
-moviemat.head()
 
 
 selection = st.text_input("Input your movie name and year to find movies with similar rating ex: 'Star Wars (1977)' "+"\n")
@@ -45,7 +44,7 @@ corr_selection.sort_values('Correlation', ascending=False).head(10)
 ratings = pd.DataFrame(df.groupby('title')['rating'].mean())
 ratings.sort_values('rating', ascending=False).head(20)
 ratings['rating_vote_number'] = pd.DataFrame(df.groupby('title')['rating'].count())
-st.write(ratings.head())
+
 
 st.write(ratings.sort_values('rating_vote_number',ascending=False).head())
 
