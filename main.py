@@ -21,7 +21,16 @@ df.drop(["timestamp"], axis = 1, inplace = True)
 
 
 
+#start setting up the reccomendation system 
 
+
+'''
+We will use the Item - Item recommodition method, selecting and recommending similar films (those with similar ratings).
+
+We will make a collaborative recommodition using the ratings given by the users.
+
+We will recommend the most liked (leader) film to everyone.
+'''
 moviemat = df.pivot_table(index='user_id',columns='title',values='rating')
 moviemat.head()
 
