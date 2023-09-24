@@ -1,5 +1,3 @@
 [global]
 showWarningOnDirectExecution = false
-disableWatchdogWarning = True
-disableWidgetStateDuplicationWarning = true
-showWarningOnDirectExecution = false
+
